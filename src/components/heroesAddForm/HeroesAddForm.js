@@ -43,6 +43,8 @@ const HeroesAddForm = () => {
         setHeroName('');
         setHeroDescription('');
         setHeroElement('');
+        e.target.reset();
+
     }
 
 
