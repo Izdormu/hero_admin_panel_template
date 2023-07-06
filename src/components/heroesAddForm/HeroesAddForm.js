@@ -11,18 +11,20 @@
 // данных из фильтров
 import { v4 as uuidv4 } from 'uuid';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHttp } from '../../hooks/http.hook';
 import { heroAdded } from '../../actions';
 
 
 const HeroesAddForm = () => {
     const dispatch = useDispatch();
+    const { request } = useHttp();
+    const { filters, filtersLoadingStatus } = useSelector(state => state.filters);
     const [heroName, setHeroName] = useState('');
     const [heroDescription, setHeroDescription] = useState('');
     const [heroElement, setHeroElement] = useState('');
 
-    const { request } = useHttp();
+
 
     const onSubmit = async (e) => {
         e.preventDefault();
@@ -47,6 +49,24 @@ const HeroesAddForm = () => {
 
     }
 
+    const renderFilterOptions = (filters, status) => {
+        if (status === "loading") {
+            return <option>Loading...</option>
+        } else if (status === "error") {
+            return <option>Error</option>
+        }
+
+        if (filters.length === 0) {
+            return <option>Нет элементов</option>
+        } else if (filters && filters.length > 0) {
+            return filters.map(({ name, label }) => {
+                if (name === "all") {
+                    return null
+                }
+                return <option key={name} value={name}>{label}</option>
+            })
+        }
+    }
 
     return (
         <form className="border p-4 shadow-lg rounded" onSubmit={onSubmit}>
@@ -83,10 +103,7 @@ const HeroesAddForm = () => {
                     name="element"
                     onChange={(e) => setHeroElement(e.target.value)}>
                     <option >Я владею элементом...</option>
-                    <option value="fire">Огонь</option>
-                    <option value="water">Вода</option>
-                    <option value="wind">Ветер</option>
-                    <option value="earth">Земля</option>
+                    {renderFilterOptions(filters, filtersLoadingStatus)}
                 </select>
             </div>
 
