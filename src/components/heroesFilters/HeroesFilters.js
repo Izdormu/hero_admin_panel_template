@@ -58,9 +58,6 @@ const HeroesFilters = () => {
 
     const elements = renderFilters(filters);
 
-
-
-
     return (
         <div className="card shadow-lg mt-4">
             <div className="card-body">
