@@ -1,28 +1,16 @@
 {
   "heroes": [
     {
-      "id": 2,
-      "name": "Неизвестный герой",
-      "description": "Скрывающийся в тени",
-      "element": "wind"
-    },
-    {
-      "id": "2d070795-4e6f-4716-bf12-4ee98289ff3b",
-      "name": "asd",
-      "description": "asd",
+      "id": "f161944a-5974-48d4-9451-59321c270e86",
+      "name": "fighter",
+      "description": "wedg",
       "element": "fire"
     },
     {
-      "id": "7f0ef95e-9828-4345-8e92-2bae3559bc5f",
-      "name": "asd",
+      "id": "942ad0e4-033c-4a61-8270-882d601cec68",
+      "name": "Thor",
       "description": "asd",
-      "element": "fire"
-    },
-    {
-      "id": "10a32d1e-224a-4b29-a5ba-95bd200f85a5",
-      "name": "as",
-      "description": "asdasdasd",
-      "element": "earth"
+      "element": "water"
     }
   ],
   "filters": [
